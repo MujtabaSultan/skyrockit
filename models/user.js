@@ -1,29 +1,16 @@
 const mongoose = require("mongoose");
 
-// models/user.js
-
-// models/user.js
-
-const applicationSchema = new mongoose.Schema(
+const applicatonSchema = new mongoose.Schema(
   {
-    company: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    notes: {
-      type: String,
-    },
-    postingLink: {
-      type: String,
-    },
+    comapny: { type: String, required: true },
+    title: String,
     status: {
       type: String,
       enum: ["interested", "applied", "interviewing", "rejected", "accepted"],
     },
+    data: Date,
+    notes: String,
+    postingLink: String,
   },
   { timestamps: true }
 );
@@ -37,7 +24,7 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  applications: [applicationSchema],
+  applications: [applicatonSchema],
 });
 
 const User = mongoose.model("User", userSchema);
